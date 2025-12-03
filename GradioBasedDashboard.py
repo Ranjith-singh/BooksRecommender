@@ -69,7 +69,7 @@ def recommedBooks(
         if len(authersSplit) == 2:
             authersStr= authersSplit[0]+ " and "+ authersSplit[1]
         elif len(authersSplit)>2:
-            authersStr= f"{", ".join(authersSplit[:-1])}, and {authersSplit[-1]}"
+            authersStr= f"{', '.join(authersSplit[:-1])}, and {authersSplit[-1]}"
         else:
             authersStr= row["authors"]
         
