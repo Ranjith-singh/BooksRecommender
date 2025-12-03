@@ -3,3 +3,5 @@
 /Lib/*
 /Scripts/*
 /share/*
+
+*.env
