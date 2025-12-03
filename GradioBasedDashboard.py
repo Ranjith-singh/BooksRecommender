@@ -104,4 +104,4 @@ with gr.Blocks() as dashboard:
                     outputs= output)
     
 if __name__ == "__main__":
-    dashboard.launch(theme=gr.themes.Soft(), share=True, server_port=port)
+    dashboard.launch(theme=gr.themes.Soft(), share=True, server_name="0.0.0.0", server_port=port)
