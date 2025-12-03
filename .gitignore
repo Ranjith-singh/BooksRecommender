@@ -9,4 +9,5 @@ venv/*
 share/*
 
 pyvenv.cfg
+*/pyvenv.cfg
 *.env
