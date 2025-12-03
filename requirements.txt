@@ -9,5 +9,5 @@ langchain-openai==0.2.0
 langchain-chroma==0.1.4
 chromadb==0.4.24
 tqdm==4.66.4
-huggingface_hub==0.17.3
+huggingface_hub==0.23.5
 
