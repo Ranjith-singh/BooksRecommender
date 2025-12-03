@@ -9,6 +9,7 @@ from langchain_chroma import Chroma
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 
 import gradio as gr
+import os
 
 load_dotenv()
 
@@ -22,6 +23,8 @@ documents= textSplitter.split_documents(rawDouments)
 
 embedding = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
 dbBooks= Chroma.from_documents(documents, embedding=embedding)
+
+port = int(os.environ.get("PORT", 7860))
 
 def retreiveSemanticRecommendation(
         query: str,
@@ -101,4 +104,4 @@ with gr.Blocks() as dashboard:
                     outputs= output)
     
 if __name__ == "__main__":
-    dashboard.launch(theme=gr.themes.Soft(), share=True)
+    dashboard.launch(theme=gr.themes.Soft(), share=True, server_port=port)
