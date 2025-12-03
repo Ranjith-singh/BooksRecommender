@@ -44,11 +44,11 @@ def retreiveSemanticRecommendation(
     elif tone == "Angry":
         booksRecs.sort_values(by='anger', ascending=False, inplace=True)
     elif tone == ["Suspenseful", "fear"]:
-        book_recs.sort_values(by="fear", ascending=False, inplace=True)
+        booksRecs.sort_values(by="fear", ascending=False, inplace=True)
     elif tone == "Sad":
-        book_recs.sort_values(by="sadness", ascending=False, inplace=True)
+        booksRecs.sort_values(by="sadness", ascending=False, inplace=True)
     elif tone == "Disgusting":
-        book_recs.sort_values(by="disgust", ascending=False, inplace=True)
+        booksRecs.sort_values(by="disgust", ascending=False, inplace=True)
     
     return booksRecs
 
