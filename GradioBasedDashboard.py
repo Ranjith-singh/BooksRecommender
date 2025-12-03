@@ -6,6 +6,7 @@ from langchain_community.document_loaders import TextLoader
 from langchain_text_splitters import CharacterTextSplitter
 from langchain_openai import OpenAIEmbeddings
 from langchain_chroma import Chroma
+from langchain_community.embeddings import SentenceTransformerEmbeddings
 
 import gradio as gr
 
@@ -18,7 +19,9 @@ books['large_thumbnail']= np.where(books['large_thumbnail'].isna(),"coverNotFoun
 rawDouments= TextLoader("tagged_description.txt", encoding='utf-8').load()
 textSplitter= CharacterTextSplitter(separator='\n', chunk_size=1, chunk_overlap=0)
 documents= textSplitter.split_documents(rawDouments)
-dbBooks= Chroma.from_documents(documents)
+
+embedding = SentenceTransformerEmbeddings(model_name="all-MiniLM-L6-v2")
+dbBooks= Chroma.from_documents(documents, embedding=embedding)
 
 def retreiveSemanticRecommendation(
         query: str,
