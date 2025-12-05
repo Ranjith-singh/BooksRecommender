@@ -26,3 +26,29 @@ theoritical knowledge about LLM's:
     the input text is converted in self attention vectors and compared with already existing vector embeddings
         and similarity score is generated based on different similarity mechanism
     the self attention vectors are assigned similar id's in encoder aswell decoder for easy metadata retrival
+Now we need to recommend the books based on their query relating to the Description using OpenAi's openApi:
+    we need to separate the taggedDescription into a file for linking b/w Description and Og Books.csv
+    we need langchain's TextReader: to read from a .txt to readable format for langchain,
+        CharacterTextSplitter: to split the taggedDescription
+    we use OpenAiEmbedding to Assign weights for each of the tokens in the taggedDescription
+        and grouping them based on their weights similarity using encoder Blocks
+    After that we assign them to the vector Database: Chroma based on the Self attention vectors
+        for easy performing of CRED ops on the Database
+    the OpenAiEmbedding perform the similarity search based on the query provided
+we classify the board range of categories into Narrow range:
+    since the top_k categories hold most % of the data we categorise them into 2 main categories fiction and non-fiction
+    then we use huggingFace text classification model to classify the top_k model into fiction and Non-fiction
+    then we get the accuracy of the model using the predictedCategories and actually assignedCategories
+        since it is a zero-shot model the accuracy is not at peeks
+    then we classify the rest: n-top-k categories based on this model and put them into a .csv file
+we assign emotions categories to the books based on their Description:
+    we use the same huggingFace text classification model but this time we use specific to the emotions
+    since the Description is lengthy we split and assign what percent of emotions each Description part has to offer
+        then we take the mean of it
+    and Append it to the og books.csv
+we use Gradio framework which provides acts a platform to display our ML projects:
+    we specify the data/info to be displayed in the webpage and specify the dropdown's etc and launch the dashboard
+
+to run the application in local:
+    clone the gitHub repo: git clone https://github.com/Ranjith-singh/BookSenseAI.git
+    run the file using: python GradioBasedDashboard.py
